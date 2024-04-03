@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Todo from "./Todo";
 
 function App() {
   return (
     <div className="App">
-     <h1>Todo react App</h1>
+      <Todo item="공부하기" name="dona"/>
+      <Todo item="잠자기" name="dona"/>
+      <Todo item="숨쉬기" name="dona"/>
     </div>
   );
 }
