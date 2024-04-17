@@ -18,6 +18,12 @@ const AddTodo = (props) => {
     setItem({ title: "" }); // 입력 값 초기화하여 리렌더링 발생
   };
 
+  const enterEventHandler = (e) => {
+    if (e.key === 'Enter') {
+      onButtonClick(); 
+    }
+  }
+
   return (
     <Grid container style={{ marginTop: 20 }}>
       {/* 입력 필드 */}
@@ -26,6 +32,7 @@ const AddTodo = (props) => {
           placeholder="Add Todo here"
           fullWidth
           onChange={onInputChange}
+          onKeyPress={enterEventHandler}
           value={item.title}
         />
       </Grid>

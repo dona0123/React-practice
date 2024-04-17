@@ -6,18 +6,7 @@ import AddTodo from "./AddTodo";
 
 function App() {
   // 아이템 상태 변수
-  const [items, setItems] = useState([
-    {
-      id: 0,
-      title: "Hello World 1",
-      done: true,
-    },
-    {
-      id: 1,
-      title: "Hello World 2",
-      done: false,
-    },
-  ]);
+  const [items, setItems] = useState([]);
 
   // 아이템 추가 함수
   const addItem = (item) => {
@@ -27,18 +16,28 @@ function App() {
     // 아이템 배열 업데이트
     setItems([...items, item]); // 자동으로 리렌더링이 일어남
     console.log("items: ", items);
-  };
+  }
+
+  const deleteItem = (item) => {
+    const newItems = items.filter( e => e.id !== item.id);
+    setItems([...newItems]);
+  }
+
+  const editItem = () => {
+    setItems([...items]); 
+}
+
 
   // 할일 목록
-  let todoItems = items.length > 0 && (
-    <Paper style={{ margin: 16 }}>
+  let todoItems = items.length > 0 && 
+    <Paper style={{ margin:16 }}>
       <List>
-        {items.map((item) => (
-          <Todo item={item} key={item.id} />
-        ))}
+        {items.map((item) => <Todo item={item} editItem={editItem} deleteItem={deleteItem} key={item.id}/> )};
+        
       </List>
     </Paper>
-  );
+  
+
 
   return (
     <div className="App">
